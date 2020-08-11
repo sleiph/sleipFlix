@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import CadastroVideo from './pages/cadastro/Video';
 import CadastroCategoria from './pages/cadastro/Categoria';
-import * as serviceWorker from './serviceWorker';
 
-import {
-  BrowserRouter, Switch, Route
-} from 'react-router-dom';
-
+// Desafio master blaster na descrição
+// Colocar um jogo ou brincadeira nessa página:
 const Pagina404 = () => (
   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
     <h1>Ops, quebrou tudo :O</h1>
@@ -19,7 +18,12 @@ const Pagina404 = () => (
     <p>
       Ou <a href="https://www.youtube.com/watch?v=jOAU81jdi-c&list=PLTcmLKdIkOWmeNferJ292VYKBXydGeDej">aprender a fazer o jogo</a>
     </p>
-    {}
+    {/*
+      Pessoal, quem quiser fazer o desafio do Flappy Bird, da pra usar esse iframe aqui: 
+      - https://codepen.io/omariosouto/pen/pogmdGE
+      E quem quiser programar o jogo:
+      - https://www.youtube.com/watch?v=jOAU81jdi-c&list=PLTcmLKdIkOWmeNferJ292VYKBXydGeDej
+    */}
     <iframe
       title="Flappy Bird Game"
       src="https://mariosouto.com/flappy-bird-devsoutinho/"
@@ -31,16 +35,11 @@ const Pagina404 = () => (
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      <Route path="/cadastro/categoria" component={CadastroCategoria} />
-      <Route path="/cadastro/video" component={CadastroVideo} />
       <Route path="/" component={Home} exact />
+      <Route path="/cadastro/video" component={CadastroVideo} />
+      <Route path="/cadastro/categoria" component={CadastroCategoria} />
       <Route component={Pagina404} />
     </Switch>
   </BrowserRouter>,
   document.getElementById('root')
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
